@@ -23,9 +23,11 @@ Changes moved from LoTAS
 Changes added
 - Fully charged bows are always critical hits
 - The Elder Guardian never inflicts mining fatigue on the player (See the MixinEntityElderGuardian file)
+- All mobs will always drop what armor they wearing and what items they are holding
 - Creepers will always drop the max amount of gunpowder
 - Blazes will always drop the max amount of rods
-- Wither Skeletons will always drop skulls and nothing else
+- Wither Skeletons will always drop skulls (and their sword)
+- Skeletons will always drop 2 arrows and 0 bones
 
 Blocks
 - Gravel always drops flint

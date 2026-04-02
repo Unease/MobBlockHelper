@@ -9,10 +9,16 @@ import com.minecrafttas.mobblockhelper.MobBlockHelper;
 
 import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.util.ResourceLocation;
-
+/**
+ * @author Unease
+ */
 @Mixin(EntityBlaze.class)
 public class MixinEntityBlaze {
 
+	/**
+	 * 
+	 * Redirect the loot table to my own
+	 */
 	@Inject(method = "getLootTable", at = @At("HEAD"), cancellable = true)
 	private void onGetLootTable(CallbackInfoReturnable<ResourceLocation> cir) {
 		if (MobBlockHelper.isTASmodLoaded) {

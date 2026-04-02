@@ -43,6 +43,8 @@ import net.minecraft.entity.monster.EntityElderGuardian;
  * monument in under 60 seconds, we can manipulate the entity ID count to ensure
  * the modulus check never hits zero during our window, effectively remaining
  * immune to mining fatigue. </blockquote>
+ * 
+ * @author Unease
  */
 @Mixin(EntityElderGuardian.class)
 public class MixinElderGuardian {

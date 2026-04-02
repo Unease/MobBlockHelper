@@ -7,11 +7,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import com.minecrafttas.mobblockhelper.MobBlockHelper;
 
-import net.minecraft.entity.monster.EntityCreeper;
+import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.util.ResourceLocation;
 
-@Mixin(EntityCreeper.class)
-public class MixinEntityCreeper {
+/**
+ * @author Unease
+ */
+@Mixin(EntitySkeleton.class)
+public class MixinEntitySkeleton {
 
 	/**
 	 * 
@@ -20,9 +23,9 @@ public class MixinEntityCreeper {
 	@Inject(method = "getLootTable", at = @At("HEAD"), cancellable = true)
 	private void onGetLootTable(CallbackInfoReturnable<ResourceLocation> cir) {
 		if (MobBlockHelper.isTASmodLoaded) {
-			cir.setReturnValue(new ResourceLocation("mobblockhelper", "entities/creeper"));
+			cir.setReturnValue(new ResourceLocation("mobblockhelper", "entities/skeleton"));
 		} else {
-			cir.setReturnValue(new ResourceLocation("minecraft", "entities/creeper"));
+			cir.setReturnValue(new ResourceLocation("minecraft", "entities/skeleton"));
 		}
 	}
 }

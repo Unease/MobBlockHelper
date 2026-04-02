@@ -14,6 +14,10 @@ import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
+/**
+ * 
+ * @author Unease
+ */
 @Mixin(EntityArrow.class)
 public abstract class MixinEntityArrow extends Entity {
 
@@ -25,10 +29,7 @@ public abstract class MixinEntityArrow extends Entity {
 	private double damage;
 	
 	/**
-	 * 
-	 * @param rand
-	 * @param bound
-	 * @return Always makes a fully charged bow shot a critical hit
+	 * Always makes full bow shots critical
 	 */
 	@Redirect(method = "onHit(Lnet/minecraft/util/math/RayTraceResult;)V", 
 			at = @At(value = "INVOKE", target = "Ljava/util/Random;nextInt(I)I"))

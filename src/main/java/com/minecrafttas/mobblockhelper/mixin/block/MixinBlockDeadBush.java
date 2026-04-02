@@ -10,6 +10,9 @@ import com.minecrafttas.mobblockhelper.MobBlockHelper;
 
 import net.minecraft.block.BlockDeadBush;
 
+/**
+ * @author Unease
+ */
 @Mixin(BlockDeadBush.class)
 public class MixinBlockDeadBush {
 

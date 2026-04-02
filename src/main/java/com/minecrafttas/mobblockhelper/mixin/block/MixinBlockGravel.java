@@ -10,6 +10,9 @@ import com.minecrafttas.mobblockhelper.MobBlockHelper;
 
 import net.minecraft.block.BlockGravel;
 
+/**
+ * @author Unease
+ */
 @Mixin(BlockGravel.class)
 public class MixinBlockGravel {
 
