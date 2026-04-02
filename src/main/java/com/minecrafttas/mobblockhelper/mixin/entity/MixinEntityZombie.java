@@ -13,9 +13,10 @@ public class MixinEntityZombie {
 
 	@Redirect(method = "onInitialSpawn(Lnet/minecraft/world/DifficultyInstance;Lnet/minecraft/entity/IEntityLivingData;)Lnet/minecraft/entity/IEntityLivingData;", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/monster/EntityZombie;setCanPickUpLoot(Z)V"))
 	private void redirectPickUpLoot(EntityZombie zombie, boolean canPickup) {
-
 		if (MobBlockHelper.isTASmodLoaded) {
 			zombie.setCanPickUpLoot(true); // For Diamonds to You!
+		} else {
+			zombie.setCanPickUpLoot(canPickup);
 		}
 	}
 }

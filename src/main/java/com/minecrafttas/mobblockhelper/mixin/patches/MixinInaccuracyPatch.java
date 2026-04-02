@@ -24,8 +24,8 @@ public abstract class MixinInaccuracyPatch {
 
 		if (MobBlockHelper.isTASmodLoaded) {
 			return 0;
+		} else {
+			return random.nextGaussian();
 		}
-
-		return random.nextGaussian();
 	}
 }

@@ -17,7 +17,8 @@ public class MixinBlockDeadBush {
 	private int redirectRandomSticks(Random rand, int i) {
 		if (MobBlockHelper.isTASmodLoaded) {
 			return 2; // Always drops the max amount of sticks
+		} else {
+			return rand.nextInt(i);
 		}
-		return rand.nextInt(i);
 	}
 }

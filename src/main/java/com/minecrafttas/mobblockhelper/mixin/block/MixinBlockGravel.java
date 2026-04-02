@@ -17,7 +17,8 @@ public class MixinBlockGravel {
 	private int redirectRandomFlint(Random rand, int i) {
 		if (MobBlockHelper.isTASmodLoaded) {
 			return 0; // Always drops flint
+		} else {
+			return rand.nextInt(i);
 		}
-		return rand.nextInt(i);
 	}
 }

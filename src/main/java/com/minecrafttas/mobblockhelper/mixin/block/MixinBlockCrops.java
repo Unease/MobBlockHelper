@@ -17,7 +17,8 @@ public class MixinBlockCrops {
 	private int redirectRandom(Random rand, int i) {
 		if (MobBlockHelper.isTASmodLoaded) {
 			return 0; // Always drops the max amount from crops
+		} else {
+			return rand.nextInt(i);
 		}
-		return rand.nextInt(i);
 	}
 }

@@ -53,7 +53,6 @@ public class MixinElderGuardian {
 		if (MobBlockHelper.isTASmodLoaded) {
 			return 0;
 		} else {
-
 			return entity.ticksExisted;
 		}
 	}
@@ -64,7 +63,6 @@ public class MixinElderGuardian {
 		if (MobBlockHelper.isTASmodLoaded) {
 			return 1201;
 		} else {
-
 			return entity.getEntityId();
 		}
 	}
