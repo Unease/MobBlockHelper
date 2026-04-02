@@ -27,6 +27,11 @@ Changes added
 - Blazes will always drop the max amount of rods
 - Wither Skeletons will always drop skulls and nothing else
 
+Blocks
+- Gravel always drops flint
+- Crops always drop the maximum amount
+- DeadBushes always drop 2 sticks
+
 # Installation
 This mod requires [TASmod](https://github.com/MinecraftTAS/TASmod) to be installed to properly work. It also requires an instance created using [Orinthe CLI](https://ornithemc.net/download/). In order to create the instance, download the program and execute it from the command line with the argument `prism --minecraft-version VERSION --loader-type fabric --gen 2`. The `--loader-type fabric` and `--gen 2` arguments are **required** for both TASmod and this mod to work.
 
