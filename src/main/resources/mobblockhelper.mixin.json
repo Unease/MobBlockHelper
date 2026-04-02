@@ -9,6 +9,7 @@
 		"entity.MixinEntityCreeper",
 		"entity.MixinEntityWitherSkeleton",
 		"entity.MixinElderGuardian",
+		"entity.MixinEntityArrow",
 		"patches.MixinBlock",
 		"patches.MixinExplosionPatch",
 		"patches.MixinInaccuracyPatch",
