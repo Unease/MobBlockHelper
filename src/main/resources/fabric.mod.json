@@ -1,0 +1,31 @@
+{
+	"schemaVersion": 1,
+	"id": "mobblockhelper",
+	"version": "0.0.1",
+	"name": "MobBlockHelper",
+	"description": "Helps override mob and block drops for creating non-playback TASes with TASmod",
+	"authors": [
+		"Pancake, Scribble, CittyKat, Unease"
+	],
+	"contact": {
+		"homepage": "https://minecrafttas.com",
+		"sources": "https://github.com/MinecraftTAS/"
+	},
+
+	"license": "GPLv3",
+	"icon": "",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.minecrafttas.mobblockhelper.MobBlockHelper"
+		]
+	},
+	"mixins": [
+		"mobblockhelper.mixin.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.14.11",
+		"minecraft": "1.11.2",
+		"java": ">=8"
+	}
+}

@@ -1,0 +1,25 @@
+{
+	"required": true,
+	"minVersion": "0.8",
+	"package": "com.minecrafttas.mobblockhelper.mixin",
+	"compatibilityLevel": "JAVA_8",
+	"mixins": [
+		"entity.MixinEntityZombie",
+		"entity.MixinEntityBlaze",
+		"entity.MixinEntityCreeper",
+		"entity.MixinEntityWitherSkeleton",
+		"entity.MixinElderGuardian",
+		"patches.MixinBlock",
+		"patches.MixinExplosionPatch",
+		"patches.MixinInaccuracyPatch",
+		"patches.MixinPatchDurabilityEnch",
+		"block.MixinBlockDeadBush",
+		"block.MixinBlockGravel",
+		"block.MixinBlockCrops"
+	],
+	"client": [
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
