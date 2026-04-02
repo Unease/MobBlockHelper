@@ -13,11 +13,12 @@ import net.minecraft.util.ResourceLocation;
 @Mixin(EntityBlaze.class)
 public class MixinEntityBlaze {
 
-    @Inject(method = "getLootTable", at = @At("HEAD"), cancellable = true)
-    private void onGetLootTable(CallbackInfoReturnable<ResourceLocation> cir) {
+	@Inject(method = "getLootTable", at = @At("HEAD"), cancellable = true)
+	private void onGetLootTable(CallbackInfoReturnable<ResourceLocation> cir) {
 		if (MobBlockHelper.isTASmodLoaded) {
 			cir.setReturnValue(new ResourceLocation("mobblockhelper", "entities/blaze"));
+		} else {
+			cir.setReturnValue(new ResourceLocation("minecraft", "entities/blaze"));
 		}
-		cir.setReturnValue(new ResourceLocation("minecraft", "entities/blaze"));
-    }
+	}
 }

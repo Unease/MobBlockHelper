@@ -13,11 +13,12 @@ import net.minecraft.util.ResourceLocation;
 @Mixin(EntityWitherSkeleton.class)
 public class MixinEntityWitherSkeleton {
 
-    @Inject(method = "getLootTable", at = @At("HEAD"), cancellable = true)
-    private void onGetLootTable(CallbackInfoReturnable<ResourceLocation> cir) {
+	@Inject(method = "getLootTable", at = @At("HEAD"), cancellable = true)
+	private void onGetLootTable(CallbackInfoReturnable<ResourceLocation> cir) {
 		if (MobBlockHelper.isTASmodLoaded) {
 			cir.setReturnValue(new ResourceLocation("mobblockhelper", "entities/wither_skeleton"));
+		} else {
+			cir.setReturnValue(new ResourceLocation("minecraft", "entities/wither_skeleton"));
 		}
-		cir.setReturnValue(new ResourceLocation("minecraft", "entities/wither_skeleton"));
-    }
+	}
 }

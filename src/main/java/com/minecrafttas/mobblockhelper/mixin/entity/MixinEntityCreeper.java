@@ -13,11 +13,12 @@ import net.minecraft.util.ResourceLocation;
 @Mixin(EntityCreeper.class)
 public class MixinEntityCreeper {
 
-    @Inject(method = "getLootTable", at = @At("HEAD"), cancellable = true)
-    private void onGetLootTable(CallbackInfoReturnable<ResourceLocation> cir) {
+	@Inject(method = "getLootTable", at = @At("HEAD"), cancellable = true)
+	private void onGetLootTable(CallbackInfoReturnable<ResourceLocation> cir) {
 		if (MobBlockHelper.isTASmodLoaded) {
 			cir.setReturnValue(new ResourceLocation("mobblockhelper", "entities/creeper"));
+		} else {
+			cir.setReturnValue(new ResourceLocation("minecraft", "entities/creeper"));
 		}
-		cir.setReturnValue(new ResourceLocation("minecraft", "entities/creeper"));
-    }
+	}
 }
