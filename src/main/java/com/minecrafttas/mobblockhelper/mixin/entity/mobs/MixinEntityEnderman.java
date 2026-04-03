@@ -1,21 +1,20 @@
-package com.minecrafttas.mobblockhelper.mixin.entity;
+package com.minecrafttas.mobblockhelper.mixin.entity.mobs;
 
 import org.spongepowered.asm.mixin.Mixin;
-
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import com.minecrafttas.mobblockhelper.MobBlockHelper;
 
-import net.minecraft.entity.monster.EntityWitherSkeleton;
+import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.util.ResourceLocation;
 
 /**
  * @author Unease
  */
-@Mixin(EntityWitherSkeleton.class)
-public class MixinEntityWitherSkeleton {
+@Mixin(EntityEnderman.class)
+public class MixinEntityEnderman {
 
 	/**
 	 * 
@@ -24,9 +23,9 @@ public class MixinEntityWitherSkeleton {
 	@Inject(method = "getLootTable", at = @At("HEAD"), cancellable = true)
 	private void onGetLootTable(CallbackInfoReturnable<ResourceLocation> cir) {
 		if (MobBlockHelper.isTASmodLoaded) {
-			cir.setReturnValue(new ResourceLocation("mobblockhelper", "entities/wither_skeleton"));
+			cir.setReturnValue(new ResourceLocation("mobblockhelper", "entities/enderman"));
 		} else {
-			cir.setReturnValue(new ResourceLocation("minecraft", "entities/wither_skeleton"));
+			cir.setReturnValue(new ResourceLocation("minecraft", "entities/enderman"));
 		}
 	}
 }

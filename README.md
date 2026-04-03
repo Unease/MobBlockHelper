@@ -20,16 +20,24 @@ Changes moved from LoTAS
 - Throwable Projectile Inaccuracy (from LoTAS)
 - Unbreaking enchantment will never use durability (from LoTAS)
 
-Changes added
+Entity RNG related changes
 - Fully charged bows are always critical hits
 - The Elder Guardian never inflicts mining fatigue on the player (See the MixinEntityElderGuardian file)
 - All mobs will always drop what armor they wearing and what items they are holding
-- Creepers will always drop the max amount of gunpowder
-- Blazes will always drop the max amount of rods
-- Wither Skeletons will always drop skulls (and their sword)
-- Skeletons will always drop 2 arrows and 0 bones
+- Certain mobs will always drop the maximum amount of loot 
+- Wither skeletons will never drop bones or coal but will always drop a skull
+- Zombie Villagers will always convert with the minimum possible wait
+- Zombies will always pick up items (Relevant for the *Diamonds to You!* achievement)
 
-Blocks
+The following entity loot tables were changed to always the max amount of certain materials:
+- Creeper
+- Enderman
+- Skeleton
+- Wither Skeleton
+- Blaze
+
+
+Block RNG
 - Gravel always drops flint
 - Crops always drop the maximum amount
 - DeadBushes always drop 2 sticks

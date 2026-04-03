@@ -4,18 +4,24 @@
 	"package": "com.minecrafttas.mobblockhelper.mixin",
 	"compatibilityLevel": "JAVA_8",
 	"mixins": [
-		"entity.MixinEntityZombie",
-		"entity.MixinEntityBlaze",
-		"entity.MixinEntityCreeper",
-		"entity.MixinEntitySkeleton",
-		"entity.MixinEntityWitherSkeleton",
+		"entity.mobs.MixinEntityZombie",
+		"entity.mobs.MixinEntityBlaze",
+		"entity.mobs.MixinEntityCreeper",
+		"entity.mobs.MixinEntitySkeleton",
+		"entity.mobs.MixinEntityWitherSkeleton",
+		"entity.mobs.MixinEntityEnderman",
+		"entity.mobs.MixinEntityZombieVillager",
+		
 		"entity.MixinElderGuardian",
 		"entity.MixinEntityArrow",
 		"entity.MixinEntityLiving",
+		
 		"patches.MixinBlock",
+		"patches.MixinEntity",
 		"patches.MixinExplosionPatch",
 		"patches.MixinInaccuracyPatch",
 		"patches.MixinPatchDurabilityEnch",
+		
 		"block.MixinBlockDeadBush",
 		"block.MixinBlockGravel",
 		"block.MixinBlockCrops"

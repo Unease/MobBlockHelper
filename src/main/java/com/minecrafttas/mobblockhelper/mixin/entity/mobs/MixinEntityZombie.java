@@ -1,4 +1,4 @@
-package com.minecrafttas.mobblockhelper.mixin.entity;
+package com.minecrafttas.mobblockhelper.mixin.entity.mobs;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
