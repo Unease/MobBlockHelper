@@ -4,8 +4,9 @@ import java.util.Random;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.minecrafttas.mobblockhelper.MobBlockHelper;
 
 import net.minecraft.entity.projectile.EntityThrowable;
@@ -18,14 +19,12 @@ import net.minecraft.entity.projectile.EntityThrowable;
  */
 @Mixin(EntityThrowable.class)
 public abstract class MixinInaccuracyPatch {
-//	@Redirect(method = "shoot(DDDFF)V", at = @At(value = "INVOKE", target = "Ljava/util/Random;nextGaussian()D", remap = false))
-	@Redirect(method = "setThrowableHeading", at = @At(value = "INVOKE", target = "Ljava/util/Random;nextGaussian()D", remap = false))
-	private double redirect_internalShoot(Random random) {
-
+//	@WrapOperation(method = "shoot(DDDFF)V", at = @At(value = "INVOKE", target = "Ljava/util/Random;nextGaussian()D", remap = false))
+	@WrapOperation(method = "setThrowableHeading", at = @At(value = "INVOKE", target = "Ljava/util/Random;nextGaussian()D", remap = false))
+	private double redirect_internalShoot(Random rand, Operation<Double> original) {
 		if (MobBlockHelper.isTASmodLoaded) {
 			return 0;
-		} else {
-			return random.nextGaussian();
 		}
+		return original.call(rand);
 	}
 }

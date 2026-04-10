@@ -16,15 +16,13 @@ import net.minecraft.util.ResourceLocation;
 public class MixinEntityWitherSkeleton {
 
 	/**
-	 * 
 	 * Redirect the loot table to my own
 	 */
 	@ModifyReturnValue(method = "getLootTable", at = @At("RETURN"))
 	private ResourceLocation returnCustomTable(ResourceLocation loc) {
 		if (MobBlockHelper.isTASmodLoaded) {
 			return new ResourceLocation("mobblockhelper", "entities/wither_skeleton");
-		} else {
-			return new ResourceLocation("minecraft", "entities/wither_skeleton"); 
 		}
+		return new ResourceLocation("minecraft", "entities/wither_skeleton");
 	}
 }

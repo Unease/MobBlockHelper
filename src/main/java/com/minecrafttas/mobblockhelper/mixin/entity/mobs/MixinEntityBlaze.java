@@ -16,15 +16,13 @@ import net.minecraft.util.ResourceLocation;
 public class MixinEntityBlaze {
 
 	/**
-	 * 
 	 * Redirect the loot table to my own
 	 */
 	@ModifyReturnValue(method = "getLootTable", at = @At("RETURN"))
 	private ResourceLocation returnCustomTable(ResourceLocation loc) {
 		if (MobBlockHelper.isTASmodLoaded) {
 			return new ResourceLocation("mobblockhelper", "entities/blaze");
-		} else {
-			return new ResourceLocation("minecraft", "entities/blaze"); 
 		}
+		return new ResourceLocation("minecraft", "entities/blaze");
 	}
 }

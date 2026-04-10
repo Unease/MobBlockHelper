@@ -16,15 +16,13 @@ import net.minecraft.util.ResourceLocation;
 public class MixinEntityEnderman {
 
 	/**
-	 * 
 	 * Redirect the loot table to my own
 	 */
 	@ModifyReturnValue(method = "getLootTable", at = @At("RETURN"))
 	private ResourceLocation returnCustomTable(ResourceLocation loc) {
 		if (MobBlockHelper.isTASmodLoaded) {
 			return new ResourceLocation("mobblockhelper", "entities/enderman");
-		} else {
-			return new ResourceLocation("minecraft", "entities/enderman"); 
 		}
+		return new ResourceLocation("minecraft", "entities/enderman");
 	}
 }

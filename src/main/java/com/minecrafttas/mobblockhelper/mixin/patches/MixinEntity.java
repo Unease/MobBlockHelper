@@ -3,8 +3,9 @@ package com.minecrafttas.mobblockhelper.mixin.patches;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.minecrafttas.mobblockhelper.MobBlockHelper;
 
 import net.minecraft.client.Minecraft;
@@ -36,12 +37,10 @@ public class MixinEntity {
 	 * 
 	 * @return Returns a new modified EntityItem with a custom velocity
 	 */
-	@Redirect(method = "entityDropItem", at = @At(value = "NEW", target = "Lnet/minecraft/entity/item/EntityItem;<init>(Lnet/minecraft/world/World;DDDLnet/minecraft/item/ItemStack;)Lnet/minecraft/entity/item/EntityItem;"))
-	public EntityItem moveItem(World w, double x, double y, double z, ItemStack stack) {
-
+	@WrapOperation(method = "entityDropItem", at = @At(value = "NEW", target = "Lnet/minecraft/entity/item/EntityItem;<init>(Lnet/minecraft/world/World;DDDLnet/minecraft/item/ItemStack;)Lnet/minecraft/entity/item/EntityItem;"))
+	public EntityItem moveItem(World w, double x, double y, double z, ItemStack stack, Operation<EntityItem> original) {
 		EntityPlayerSP player = Minecraft.getMinecraft().player;
 		EntityItem it = new EntityItem(w, posX, posY, posZ, stack);
-
 		if (MobBlockHelper.isTASmodLoaded) {
 			double pX = player.posX - posX;
 			double pZ = player.posZ - posZ;
@@ -56,6 +55,6 @@ public class MixinEntity {
 			it.motionX = pX * 0.1f;
 			it.motionZ = pZ * 0.1f;
 		}
-		return it;
+		return original.call(w, x, y, z, stack);
 	}
 }

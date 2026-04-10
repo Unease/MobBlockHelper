@@ -4,8 +4,9 @@ import java.util.Random;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.minecrafttas.mobblockhelper.MobBlockHelper;
 
 import net.minecraft.entity.monster.EntityZombieVillager;
@@ -17,14 +18,14 @@ import net.minecraft.entity.monster.EntityZombieVillager;
 public class MixinEntityZombieVillager {
 
 	/**
-	 * Makes the random wait for the conversion as minimum as possible when iron bars are present
+	 * Makes the random wait for the conversion as minimum as possible when iron
+	 * bars are present
 	 */
-	@Redirect(method = "getConversionProgress", at = @At(value = "INVOKE", target = "Ljava/util/Random;nextFloat()F"))
-	private float redirectRandomConversion(Random rand) {
+	@WrapOperation(method = "getConversionProgress", at = @At(value = "INVOKE", target = "Ljava/util/Random;nextFloat()F"))
+	private float redirectRandomConversion(Random rand, Operation<Integer> original) {
 		if (MobBlockHelper.isTASmodLoaded) {
 			return 0F;
-		} else {
-			return rand.nextFloat();
 		}
+		return original.call(rand);
 	}
 }
