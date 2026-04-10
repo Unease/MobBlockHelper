@@ -6,14 +6,14 @@ import org.spongepowered.asm.mixin.injection.At;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.minecrafttas.mobblockhelper.MobBlockHelper;
 
-import net.minecraft.entity.monster.EntityEnderman;
+import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.util.ResourceLocation;
 
 /**
  * @author Unease
  */
-@Mixin(EntityEnderman.class)
-public class MixinEntityEnderman {
+@Mixin(EntityBlaze.class)
+public class MixinEntityBlaze {
 
 	/**
 	 * 
@@ -22,9 +22,9 @@ public class MixinEntityEnderman {
 	@ModifyReturnValue(method = "getLootTable", at = @At("RETURN"))
 	private ResourceLocation returnCustomTable(ResourceLocation loc) {
 		if (MobBlockHelper.isTASmodLoaded) {
-			return new ResourceLocation("mobblockhelper", "entities/enderman");
+			return new ResourceLocation("mobblockhelper", "entities/blaze");
 		} else {
-			return new ResourceLocation("minecraft", "entities/enderman"); 
+			return new ResourceLocation("minecraft", "entities/blaze"); 
 		}
 	}
 }

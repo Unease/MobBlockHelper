@@ -4,32 +4,30 @@ import java.util.Random;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.minecrafttas.mobblockhelper.MobBlockHelper;
 
 import net.minecraft.enchantment.EnchantmentDurability;
+import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 
 /**
- * This Mixin makes items with unbreaking unbreakable. silly me
+ * This Mixin makes items with unbreaking unbreakable.
+ * Original file written by Pancake
  * 
- * @author Pancake
- * @version v1.1
- * @since v1.1
+ * @author Unease
  */
 @Mixin(EnchantmentDurability.class)
 public class MixinPatchDurabilityEnch {
 
-	@Inject(at = @At("HEAD"), method = "negateDamage", cancellable = true)
-	private static void disableDamage(ItemStack stack, int level, Random rand, CallbackInfoReturnable<Boolean> bool) {
-
+	@ModifyReturnValue(at = @At("RETURN"), method = "negateDamage")
+	private static boolean disableDamage(boolean b, ItemStack stack, int level, Random rand) {
 		if (MobBlockHelper.isTASmodLoaded) {
 			if (level >= 1) {
-				bool.setReturnValue(true);
-				bool.cancel();
+				return true;
 			}
 		}
+		return stack.getItem() instanceof ItemArmor && rand.nextFloat() < 0.6F ? false : rand.nextInt(level + 1) > 0; // Original return
 	}
 }
