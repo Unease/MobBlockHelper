@@ -54,6 +54,7 @@ public class MixinEntity {
 				pZ = -1;
 			it.motionX = pX * 0.1f;
 			it.motionZ = pZ * 0.1f;
+			return it;
 		}
 		return original.call(w, x, y, z, stack);
 	}

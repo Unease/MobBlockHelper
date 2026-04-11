@@ -47,6 +47,7 @@ public class MixinBlock {
 					pZ = -1;
 				it.motionX = pX * 0.1f;
 				it.motionZ = pZ * 0.1f;
+				return it;
 			}
 		} catch (Exception e) {
 			// When called in loading screen

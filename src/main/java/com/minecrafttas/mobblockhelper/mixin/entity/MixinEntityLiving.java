@@ -28,8 +28,9 @@ public class MixinEntityLiving {
 	private void redirectArmorAndHandDropChances(float a[], float val, Operation<Void> original, World world) {
 		if (MobBlockHelper.isTASmodLoaded) {
 			Arrays.fill(a, 1F);
+		} else {
+			original.call(a, val);
 		}
-		original.call(a, val);
 	}
 
 	/**
@@ -41,7 +42,8 @@ public class MixinEntityLiving {
 	private void redirectItemDamage(ItemStack stack, int meta, Operation<Void> original) {
 		if (MobBlockHelper.isTASmodLoaded) {
 			stack.setItemDamage(((int) stack.getMaxDamage() * 1 / 4));
+		} else {
+			original.call(stack, meta);
 		}
-		original.call(stack, meta);
 	}
 }

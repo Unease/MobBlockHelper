@@ -22,7 +22,8 @@ public class MixinEntityZombie {
 	private void redirectPickUpLoot(EntityZombie zombie, boolean canPickup, Operation<Void> original) {
 		if (MobBlockHelper.isTASmodLoaded) {
 			zombie.setCanPickUpLoot(true); // For Diamonds to You!
+		} else {
+			original.call(zombie, canPickup);
 		}
-		original.call(zombie, canPickup);
 	}
 }

@@ -25,8 +25,7 @@ public class MixinExplosionPatch {
 	public float hijackExplosion(float orig) {
 		if (MobBlockHelper.isTASmodLoaded) {
 			return 1F;
-		} else {
-			return orig;
 		}
+		return orig;
 	}
 }
