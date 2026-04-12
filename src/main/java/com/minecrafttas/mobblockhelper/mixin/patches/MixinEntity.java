@@ -44,14 +44,8 @@ public class MixinEntity {
 		if (MobBlockHelper.isTASmodLoaded) {
 			double pX = player.posX - posX;
 			double pZ = player.posZ - posZ;
-			if (pX > 0)
-				pX = 1;
-			if (pX < 0)
-				pX = -1;
-			if (pZ > 0)
-				pZ = 1;
-			if (pZ < 0)
-				pZ = -1;
+			pX = (pX < 0) ? -1 : 1;
+			pZ = (pZ < 0) ? -1 : 1;
 			it.motionX = pX * 0.1f;
 			it.motionZ = pZ * 0.1f;
 			return it;

@@ -37,14 +37,8 @@ public class MixinBlock {
 			if (MobBlockHelper.isTASmodLoaded) {
 				double pX = player.posX - x;
 				double pZ = player.posZ - z;
-				if (pX > 0)
-					pX = 1;
-				if (pX < 0)
-					pX = -1;
-				if (pZ > 0)
-					pZ = 1;
-				if (pZ < 0)
-					pZ = -1;
+				pX = (pX < 0) ? -1 : 1;
+				pZ = (pZ < 0) ? -1 : 1;
 				it.motionX = pX * 0.1f;
 				it.motionZ = pZ * 0.1f;
 				return it;
