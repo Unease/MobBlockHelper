@@ -1,4 +1,4 @@
-package com.minecrafttas.mobblockhelper.mixin.entity;
+package com.minecrafttas.mobblockhelper.mixin.entity.mobs;
 
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
@@ -48,9 +48,9 @@ import net.minecraft.entity.monster.EntityElderGuardian;
  * @author Unease
  */
 @Mixin(EntityElderGuardian.class)
-public class MixinElderGuardian {
+public class MixinEntitiyElderGuardian {
 
-	@WrapOperation(method = "updateAITasks()V", at = @At(value = "FIELD", target = "Lnet/minecraft/entity/monster/EntityElderGuardian;ticksExisted:I", opcode = Opcodes.GETFIELD))
+	@WrapOperation(method = "updateAITasks", at = @At(value = "FIELD", target = "Lnet/minecraft/entity/monster/EntityElderGuardian;ticksExisted:I", opcode = Opcodes.GETFIELD))
 	private int redirectTicksExisted(EntityElderGuardian entity, Operation<Integer> original) {
 		if (MobBlockHelper.isTASmodLoaded) {
 			return 0;
@@ -58,7 +58,7 @@ public class MixinElderGuardian {
 		return original.call(entity);
 	}
 
-	@WrapOperation(method = "updateAITasks()V", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/monster/EntityElderGuardian;getEntityId()I"))
+	@WrapOperation(method = "updateAITasks", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/monster/EntityElderGuardian;getEntityId()I"))
 	private int redirectGetEntityID(EntityElderGuardian entity, Operation<Integer> original) {
 		if (MobBlockHelper.isTASmodLoaded) {
 			return 1201;

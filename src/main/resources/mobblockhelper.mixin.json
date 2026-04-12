@@ -5,14 +5,17 @@
 	"compatibilityLevel": "JAVA_8",
 	"mixins": [
 		"entity.mobs.MixinEntityZombie",
+		"entity.mobs.MixinEntityZombieVillager",
+		"entity.mobs.MixinEntityElderGuardian",
+		"entity.mobs.MixinEntityChicken",
+				
 		"entity.mobs.MixinEntityBlaze",
 		"entity.mobs.MixinEntityCreeper",
 		"entity.mobs.MixinEntitySkeleton",
 		"entity.mobs.MixinEntityWitherSkeleton",
 		"entity.mobs.MixinEntityEnderman",
-		"entity.mobs.MixinEntityZombieVillager",
+
 		
-		"entity.MixinElderGuardian",
 		"entity.MixinEntityArrow",
 		"entity.MixinEntityLiving",
 		
