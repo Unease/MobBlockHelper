@@ -48,7 +48,7 @@ import net.minecraft.entity.monster.EntityElderGuardian;
  * @author Unease
  */
 @Mixin(EntityElderGuardian.class)
-public class MixinEntitiyElderGuardian {
+public class MixinEntityElderGuardian {
 
 	@WrapOperation(method = "updateAITasks", at = @At(value = "FIELD", target = "Lnet/minecraft/entity/monster/EntityElderGuardian;ticksExisted:I", opcode = Opcodes.GETFIELD))
 	private int redirectTicksExisted(EntityElderGuardian entity, Operation<Integer> original) {
