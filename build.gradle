@@ -26,6 +26,7 @@ discombobulator {
 	//
 	//
 	versions = [
+		"1.12.2":"mbh-1.12.2",
 		"1.11.2":"mbh-1.11.2"
 	]
 	

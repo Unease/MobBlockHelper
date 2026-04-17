@@ -8,6 +8,7 @@
 		"entity.mobs.MixinEntityZombieVillager",
 		"entity.mobs.MixinEntityElderGuardian",
 		"entity.mobs.MixinEntityChicken",
+		"entity.mobs.MixinEntityOcelot",
 				
 		"entity.mobs.MixinEntityBlaze",
 		"entity.mobs.MixinEntityCreeper",

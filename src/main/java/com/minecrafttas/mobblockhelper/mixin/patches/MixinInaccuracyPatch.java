@@ -19,8 +19,11 @@ import net.minecraft.entity.projectile.EntityThrowable;
  */
 @Mixin(EntityThrowable.class)
 public abstract class MixinInaccuracyPatch {
-//	@WrapOperation(method = "shoot(DDDFF)V", at = @At(value = "INVOKE", target = "Ljava/util/Random;nextGaussian()D", remap = false))
+	//# 1.12.2
+//$$	@WrapOperation(method = "shoot(DDDFF)V", at = @At(value = "INVOKE", target = "Ljava/util/Random;nextGaussian()D", remap = false))
+	//# 1.11.2
 	@WrapOperation(method = "setThrowableHeading", at = @At(value = "INVOKE", target = "Ljava/util/Random;nextGaussian()D", remap = false))
+	//# end
 	private double redirect_internalShoot(Random rand, Operation<Double> original) {
 		if (MobBlockHelper.isTASmodLoaded) {
 			return 0;

@@ -21,11 +21,13 @@ public class MixinEntityZombieVillager {
 	 * Makes the random wait for the conversion as minimum as possible when iron
 	 * bars are present
 	 */
-	@WrapOperation(method = "getConversionProgress", at = @At(value = "INVOKE", target = "Ljava/util/Random;nextFloat()F"))
-	private float redirectRandomConversion(Random rand, Operation<Integer> original) {
-		if (MobBlockHelper.isTASmodLoaded) {
-			return 0F;
-		}
-		return original.call(rand);
-	}
+	//# 1.12.2
+//$$	@WrapOperation(method = "getConversionProgress", at = @At(value = "INVOKE", target = "Ljava/util/Random;nextFloat()F"))
+//$$	private float redirectRandomConversion(Random rand, Operation<Integer> original) {
+//$$		if (MobBlockHelper.isTASmodLoaded) {
+//$$			return 0F;
+//$$		}
+//$$		return original.call(rand);
+//$$	}
+	//# end
 }

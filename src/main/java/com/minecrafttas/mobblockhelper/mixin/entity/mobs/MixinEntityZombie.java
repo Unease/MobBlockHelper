@@ -16,8 +16,10 @@ import net.minecraft.entity.monster.EntityZombie;
 public class MixinEntityZombie {
 
 	/**
-	 * Redirect the loot table to my own
+	 * Make the zombie always pick up loot
 	 */
+	//# 1.12.2
+	//# 1.11.2
 	@WrapOperation(method = "onInitialSpawn(Lnet/minecraft/world/DifficultyInstance;Lnet/minecraft/entity/IEntityLivingData;)Lnet/minecraft/entity/IEntityLivingData;", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/monster/EntityZombie;setCanPickUpLoot(Z)V"))
 	private void redirectPickUpLoot(EntityZombie zombie, boolean canPickup, Operation<Void> original) {
 		if (MobBlockHelper.isTASmodLoaded) {
@@ -26,4 +28,5 @@ public class MixinEntityZombie {
 			original.call(zombie, canPickup);
 		}
 	}
+	//# end
 }

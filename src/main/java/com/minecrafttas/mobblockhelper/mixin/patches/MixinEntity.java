@@ -41,14 +41,19 @@ public class MixinEntity {
 	public EntityItem moveItem(World w, double x, double y, double z, ItemStack stack, Operation<EntityItem> original) {
 		EntityPlayerSP player = Minecraft.getMinecraft().player;
 		EntityItem it = new EntityItem(w, posX, posY, posZ, stack);
-		if (MobBlockHelper.isTASmodLoaded) {
-			double pX = player.posX - posX;
-			double pZ = player.posZ - posZ;
-			pX = (pX < 0) ? -1 : 1;
-			pZ = (pZ < 0) ? -1 : 1;
-			it.motionX = pX * 0.1f;
-			it.motionZ = pZ * 0.1f;
-			return it;
+
+		try {
+			if (MobBlockHelper.isTASmodLoaded) {
+				double pX = player.posX - posX;
+				double pZ = player.posZ - posZ;
+				pX = (pX < 0) ? -1 : 1;
+				pZ = (pZ < 0) ? -1 : 1;
+				it.motionX = pX * 0.1f;
+				it.motionZ = pZ * 0.1f;
+				return it;
+			}
+		} catch (Exception e) {
+
 		}
 		return original.call(w, x, y, z, stack);
 	}
